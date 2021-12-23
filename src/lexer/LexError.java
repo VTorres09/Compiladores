@@ -8,26 +8,21 @@
  * use it in some models into the 2020s. In computer science, 
  * reverse Polish notation is used in stack-oriented programming languages 
  * such as Forth, STOIC, PostScript, RPL and Joy.
- *  public class TokenType {
-     
- }
- 
+ *  
  * Contributors: 
  *     Henrique Rebelo      initial design and implementation 
  *     http://www.cin.ufpe.br/~hemr/
  * ******************************************************************/
 
+package lexer;
+
 /**
  * @author Henrique Rebelo
  */
-public enum TokenType {
+public class LexError extends RuntimeException{
+	private static final long serialVersionUID = 1L;
 
-	// Literals.
-	NUM,
-
-	// Single-character tokens for operations.
-	MINUS, PLUS, SLASH, STAR,
-	
-	EOF
-
+	public LexError(String msg) {
+		super(msg);
+	}
 }

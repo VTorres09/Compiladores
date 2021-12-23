@@ -13,43 +13,29 @@
  *     Henrique Rebelo      initial design and implementation 
  *     http://www.cin.ufpe.br/~hemr/
  * ******************************************************************/
+
+package lexer;
+
 /**
  * @author Henrique Rebelo
  */
-
 public class Token {
+
+	// Tokenizer delimiters for scanning 
+	// \\t -> the tab character
+	// \\n -> the newline character
+	// \\r -> the carriage-return character
+	// \\f -> the form-feed character
+	// ' ' -> the space character
+	public static final String TOKENIZER_DELIMITER = "\t\n\r\f ";
 
 	public final TokenType type; // token type
 	public final String lexeme; // token value
 
-	// Constructor
-	public Token (String value) throws Exception {
-		this.type = typeOf(value);      
+	public Token (TokenType type, String value) {
+		this.type = type;
 		this.lexeme = value;
 	}
-
-	// Type detector
-	private TokenType typeOf(String symbol) throws Exception {
-
-		if(symbol.chars().allMatch( Character::isDigit )){
-			return TokenType.NUM;
-		}else{
-			switch (symbol) {
-				case "+":
-					return TokenType.PLUS;
-				case "-":
-					return TokenType.MINUS;
-				case "*":
-					return TokenType.STAR;
-				case "/":
-					return TokenType.SLASH;
-				default:
-					throw new Exception("Unexpected character: " + symbol);
-			}
-		}
-		
-	}	
-
 
 	@Override
 	public String toString() {
